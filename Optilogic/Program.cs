@@ -1,91 +1,50 @@
-using System.Net.Http.Headers;
-using System.Text;
 
+using System;
+using System.Threading.Tasks;
 
-namespace Optilogic
+class Program
 {
-    class Program
+    static async Task Main(string[] args)
     {
-        static void Main(string[] args)
+        var kimaiClient = new KimaiClient();
+        var activities = await kimaiClient.GetAllActivities();
+        Console.WriteLine("Available Activities:");
+        foreach (var activity in activities)
         {
-            // Replace with your Kimai instance URL
-            string kimaiUrl = "https://your-kimai-instance.com";
-
-            // Replace with your Kimai username and password
-            string username = "your-username";
-            string password = "your-password";
-
-            // Authenticate and obtain an API token
-            string authToken = GetAuthToken(kimaiUrl, username, password);
-
-            // Retrieve a list of time entries
-            TimeEntry[] timeEntries = GetTimeEntries(kimaiUrl, authToken);
-
-            // Print the list of time entries
-            foreach (TimeEntry timeEntry in timeEntries)
-            {
-                Console.WriteLine($"ID: {timeEntry.Id}, Start: {timeEntry.Start}, End: {timeEntry.End}");
-            }
+            Console.WriteLine($"ID: {activity["id"]}, Name: {activity["name"]}");
         }
+        /*
 
-        static string GetAuthToken(string kimaiUrl, string username, string password)
-        {
-            using (HttpClient client = new HttpClient())
+            var kimaiClient = new KimaiClient();
+
+            try
             {
-                client.BaseAddress = new Uri(kimaiUrl);
+                // Define the activity name
+                string activityName = "100-Timer Normal";
 
-                // Set the authentication headers
-                client.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Basic", Convert.ToBase64String(Encoding.ASCII.GetBytes($"{username}:{password}")));
-
-                // Make the authentication request
-                HttpResponseMessage response = client.PostAsync("api/auth/token", null).Result;
-
-                // Check the response status code
-                if (response.IsSuccessStatusCode)
+                // Get the activity ID
+                var activityId = await kimaiClient.FetchTimesheetsByActivityId(activityName);
+                if (activityId == null)
                 {
-                    // Get the API token from the response
-                    string authToken = response.Content.ReadAsStringAsync().Result;
-                    return authToken;
+                    Console.WriteLine($"Activity '{activityName}' not found.");
+                    return;
                 }
-                else
+
+                Console.WriteLine($"Activity ID for '{activityName}': {activityId}");
+
+                // Fetch timesheets for the activity (without date filters)
+                var timesheets = await kimaiClient.FetchTimesheetsByActivityId(activityName);
+
+                // Display fetched timesheets
+                Console.WriteLine("Fetched Timesheets:");
+                foreach (var entry in timesheets)
                 {
-                    throw new Exception("Failed to authenticate");
+                    Console.WriteLine($"ID: {entry["id"]}, Begin: {entry["begin"]}, End: {entry["end"]}, Description: {entry["description"]}");
                 }
             }
-        }
-
-        static TimeEntry[] GetTimeEntries(string kimaiUrl, string authToken)
-        {
-            using (HttpClient client = new HttpClient())
+            catch (Exception ex)
             {
-                client.BaseAddress = new Uri(kimaiUrl);
-
-                // Set the API token header
-                client.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", authToken);
-
-                // Make the request to retrieve time entries
-                HttpResponseMessage response = client.GetAsync("api/time-entries").Result;
-
-                // Check the response status code
-                if (response.IsSuccessStatusCode)
-                {
-                    // Get the time entries from the response
-                    string timeEntriesJson = response.Content.ReadAsStringAsync().Result;
-                    TimeEntry[] timeEntries = JsonConvert.DeserializeObject<TimeEntry[]>(timeEntriesJson);
-                    return timeEntries;
-                }
-                else
-                {
-                    throw new Exception("Failed to retrieve time entries");
-                }
-            }
-        }
-    }
-
-    public class TimeEntry
-    {
-        public int Id { get; set; }
-        public DateTime Start { get; set; }
-        public DateTime End { get; set; }
+                Console.WriteLine($"Error: {ex.Message}");
+            }*/
     }
 }

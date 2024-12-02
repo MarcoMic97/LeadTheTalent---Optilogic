@@ -27,3 +27,6 @@ C:\Users\marco\Desktop\Optilogic\LeadTheTalent---Optilogic\Optilogic\obj\Debug\n
 C:\Users\marco\Desktop\Optilogic\LeadTheTalent---Optilogic\Optilogic\obj\Debug\net9.0\Optilogic.pdb
 C:\Users\marco\Desktop\Optilogic\LeadTheTalent---Optilogic\Optilogic\obj\Debug\net9.0\Optilogic.genruntimeconfig.cache
 C:\Users\marco\Desktop\Optilogic\LeadTheTalent---Optilogic\Optilogic\obj\Debug\net9.0\ref\Optilogic.dll
+C:\Users\marco\Desktop\Optilogic\LeadTheTalent---Optilogic\Optilogic\bin\Debug\net9.0\Newtonsoft.Json.dll
+C:\Users\marco\Desktop\Optilogic\LeadTheTalent---Optilogic\Optilogic\obj\Debug\net9.0\Optilogic.csproj.AssemblyReference.cache
+C:\Users\marco\Desktop\Optilogic\LeadTheTalent---Optilogic\Optilogic\obj\Debug\net9.0\Optilogic.csproj.Up2Date

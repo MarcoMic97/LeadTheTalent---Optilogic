@@ -13,7 +13,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("Optilogic")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+fb799a0c5823efb2dca05d4ccb2f04e6685f61f8")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+1b1eceb7f0d3d5327582a0147fedb0a5191a9e0a")]
 [assembly: System.Reflection.AssemblyProductAttribute("Optilogic")]
 [assembly: System.Reflection.AssemblyTitleAttribute("Optilogic")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]
